@@ -1,0 +1,6 @@
+// Copy to LocalSigning.xcconfig (ignored by Git).
+LEXE_IOS_TEAM = YOUR_TEAM_ID
+LEXE_IOS_BUNDLE_DEV = com.example.lexe
+LEXE_IOS_BUNDLE_DESIGN = com.example.lexe.design
+LEXE_IOS_BUNDLE_STAGING = com.example.lexe.staging
+LEXE_IOS_BUNDLE_PROD = com.example.lexe

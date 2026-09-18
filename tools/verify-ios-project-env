@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""Check shared iOS signing defaults; never modify the index or working tree."""
+import argparse
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+PROJECT = "app/ios/Runner.xcodeproj/project.pbxproj"
+BASELINE = "tools/ios-project-env.json"
+LOCAL = "app/ios/Flutter/LocalSigning.xcconfig"
+CONFIGS = [f"app/ios/Flutter/{name}.xcconfig" for name in
+           ("Debug", "Release", "Signing")]
+
+
+def git(*args):
+    return subprocess.check_output(["git", *args])
+
+
+def read(path, staged):
+    return git("show", f":{path}") if staged else Path(path).read_bytes()
+
+
+def protected(key):
+    return (key in ("DevelopmentTeam", "ProvisioningStyle") or
+            key.startswith(("DEVELOPMENT_TEAM", "PRODUCT_BUNDLE_IDENTIFIER",
+                            "CODE_SIGN", "PROVISIONING_PROFILE", "LEXE_IOS_")))
+
+
+def snapshot(project, configs):
+    # Use Apple's parser rather than matching text in the OpenStep plist.
+    result = subprocess.run(
+        ["plutil", "-convert", "json", "-o", "-", "--", "-"],
+        input=project, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        check=True,
+    )
+    data = json.loads(result.stdout)
+    settings = {}
+
+    def visit(value, path):
+        if isinstance(value, dict):
+            for key, child in value.items():
+                child_path = f"{path}/{key}"
+                if protected(key):
+                    settings[child_path] = child
+                else:
+                    visit(child, child_path)
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                visit(child, f"{path}/{index}")
+
+    visit(data, "")
+    # Track each configuration, including configurations with no signing keys.
+    configurations = {
+        key: {field: obj.get(field) for field in
+              ("name", "baseConfigurationReference")}
+        for key, obj in data["objects"].items()
+        if obj.get("isa") == "XCBuildConfiguration"
+    }
+    return {"settings": settings, "configurations": configurations,
+            "xcconfigs": configs}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--staged", action="store_true",
+                        help="validate the index snapshot (for pre-commit)")
+    args = parser.parse_args()
+    root = git("rev-parse", "--show-toplevel").decode().strip()
+    os.chdir(root)
+    # Catch even force-added local overrides. Working-tree mode also checks
+    # the index because an ignored local file is expected to exist on disk.
+    if git("ls-files", "--", LOCAL).strip():
+        raise ValueError(f"{LOCAL} must remain untracked")
+    expected = json.loads(read(BASELINE, args.staged))
+    actual = snapshot(read(PROJECT, args.staged), {
+        path: read(path, args.staged).decode() for path in CONFIGS
+    })
+    if actual != expected:
+        for section in expected.keys() | actual.keys():
+            before, after = expected.get(section, {}), actual.get(section, {})
+            for key in before.keys() | after.keys():
+                if before.get(key) != after.get(key):
+                    print(f"Unexpected iOS setting: {section}: {key}", file=sys.stderr)
+        raise ValueError(
+            "Shared iOS signing configuration changed. Keep personal values in "
+            f"{LOCAL}. For intentional shared changes, review and update "
+            f"{BASELINE} too. No files were modified."
+        )
+    print("iOS project uses shared signing defaults; local overrides are untracked.")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, ValueError, subprocess.CalledProcessError) as error:
+        print(f"verify-ios-project-env: {error}", file=sys.stderr)
+        sys.exit(1)

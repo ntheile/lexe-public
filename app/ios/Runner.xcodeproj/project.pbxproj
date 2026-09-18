@@ -394,7 +394,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Design";
@@ -403,7 +403,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.design;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DESIGN)";
 				PRODUCT_NAME = "Lexe Design";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -475,7 +475,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Design";
@@ -484,7 +484,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.design;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DESIGN)";
 				PRODUCT_NAME = "Lexe Design";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -553,7 +553,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Design";
@@ -562,7 +562,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.design;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DESIGN)";
 				PRODUCT_NAME = "Lexe Design";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -636,7 +636,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Dev";
@@ -645,7 +645,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DEV)";
 				PRODUCT_NAME = "Lexe Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -720,7 +720,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Staging";
@@ -729,7 +729,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_STAGING)";
 				PRODUCT_NAME = "Lexe Staging";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -803,7 +803,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lexe;
@@ -812,7 +812,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_PROD)";
 				PRODUCT_NAME = Lexe;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -884,7 +884,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Dev";
@@ -893,7 +893,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DEV)";
 				PRODUCT_NAME = "Lexe Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -964,7 +964,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Staging";
@@ -973,7 +973,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_STAGING)";
 				PRODUCT_NAME = "Lexe Staging";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -1043,7 +1043,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lexe;
@@ -1052,7 +1052,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_PROD)";
 				PRODUCT_NAME = Lexe;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -1121,7 +1121,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Dev";
@@ -1130,7 +1130,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DEV)";
 				PRODUCT_NAME = "Lexe Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -1199,7 +1199,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Staging";
@@ -1208,7 +1208,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_STAGING)";
 				PRODUCT_NAME = "Lexe Staging";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -1276,7 +1276,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Lexe;
@@ -1285,7 +1285,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_PROD)";
 				PRODUCT_NAME = Lexe;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -1354,7 +1354,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Dev";
@@ -1363,7 +1363,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DEV)";
 				PRODUCT_NAME = "Lexe Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -1490,7 +1490,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Dev";
@@ -1499,7 +1499,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DEV)";
 				PRODUCT_NAME = "Lexe Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -1518,7 +1518,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = M2MS8SZ4DR;
+				DEVELOPMENT_TEAM = "$(LEXE_IOS_TEAM)";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Lexe Dev";
@@ -1527,7 +1527,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = app.lexe.lexeapp.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(LEXE_IOS_BUNDLE_DEV)";
 				PRODUCT_NAME = "Lexe Dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";

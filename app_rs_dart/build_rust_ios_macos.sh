@@ -161,6 +161,10 @@ done
 #
 #
 
+# Xcode launched from Finder does not inherit the terminal's PATH. Append
+# standard Rust/Homebrew locations, preserving tools already on PATH.
+export PATH="$PATH:$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin"
+
 # Ensure cargo is installed
 if ! command -v cargo &> /dev/null; then
   echo >&2 "error: need to install cargo. See README.md"
@@ -190,7 +194,7 @@ done
 
 # Envs to propagate to `cargo build`
 clean_envs=(
-  "PATH=$HOME/.cargo/bin:$PATH"
+  "PATH=$PATH"
   "HOME=$HOME"
   "LC_ALL=$LC_ALL"
   # We need to use the host linker for build scripts/proc macros.

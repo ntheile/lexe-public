@@ -1,0 +1,7 @@
+// Shared defaults. Personal values belong in LocalSigning.xcconfig.
+LEXE_IOS_TEAM = M2MS8SZ4DR
+LEXE_IOS_BUNDLE_DEV = app.lexe.lexeapp.dev
+LEXE_IOS_BUNDLE_DESIGN = app.lexe.lexeapp.design
+LEXE_IOS_BUNDLE_STAGING = app.lexe.lexeapp.staging
+LEXE_IOS_BUNDLE_PROD = app.lexe.lexeapp
+#include? "LocalSigning.xcconfig"

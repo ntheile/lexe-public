@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+# Execute the staged verifier, so partially staged changes are checked as committed.
+git show :tools/verify-ios-project-env | python3 - --staged

@@ -1,0 +1,221 @@
+{
+  "configurations": {
+    "0BAD17632BD21E180015712B": {
+      "baseConfigurationReference": null,
+      "name": "Debug-design"
+    },
+    "0BAD17642BD21E180015712B": {
+      "baseConfigurationReference": "9740EEB21CF90195004384FC",
+      "name": "Debug-design"
+    },
+    "0BAD17662BD21E210015712B": {
+      "baseConfigurationReference": null,
+      "name": "Release-design"
+    },
+    "0BAD17672BD21E210015712B": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Release-design"
+    },
+    "0BAD17682BD21E2A0015712B": {
+      "baseConfigurationReference": null,
+      "name": "Profile-design"
+    },
+    "0BAD17692BD21E2A0015712B": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Profile-design"
+    },
+    "0BFB220C2C5480B500BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Debug-dev"
+    },
+    "0BFB220D2C5480B500BA0FA7": {
+      "baseConfigurationReference": "9740EEB21CF90195004384FC",
+      "name": "Debug-dev"
+    },
+    "0BFB220E2C5480BE00BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Debug-staging"
+    },
+    "0BFB220F2C5480BE00BA0FA7": {
+      "baseConfigurationReference": "9740EEB21CF90195004384FC",
+      "name": "Debug-staging"
+    },
+    "0BFB22102C5480C400BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Debug-prod"
+    },
+    "0BFB22112C5480C400BA0FA7": {
+      "baseConfigurationReference": "9740EEB21CF90195004384FC",
+      "name": "Debug-prod"
+    },
+    "0BFB22122C5480CD00BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Release-dev"
+    },
+    "0BFB22132C5480CD00BA0FA7": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Release-dev"
+    },
+    "0BFB22142C5480D300BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Release-staging"
+    },
+    "0BFB22152C5480D300BA0FA7": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Release-staging"
+    },
+    "0BFB22162C5480DC00BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Release-prod"
+    },
+    "0BFB22172C5480DC00BA0FA7": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Release-prod"
+    },
+    "0BFB22182C5480E500BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Profile-dev"
+    },
+    "0BFB22192C5480E500BA0FA7": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Profile-dev"
+    },
+    "0BFB221A2C5480EB00BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Profile-staging"
+    },
+    "0BFB221B2C5480EB00BA0FA7": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Profile-staging"
+    },
+    "0BFB221C2C5480F300BA0FA7": {
+      "baseConfigurationReference": null,
+      "name": "Profile-prod"
+    },
+    "0BFB221D2C5480F300BA0FA7": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Profile-prod"
+    },
+    "249021D3217E4FDB00AE95B9": {
+      "baseConfigurationReference": null,
+      "name": "Profile"
+    },
+    "249021D4217E4FDB00AE95B9": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Profile"
+    },
+    "97C147031CF9000F007C117D": {
+      "baseConfigurationReference": null,
+      "name": "Debug"
+    },
+    "97C147041CF9000F007C117D": {
+      "baseConfigurationReference": null,
+      "name": "Release"
+    },
+    "97C147061CF9000F007C117D": {
+      "baseConfigurationReference": "9740EEB21CF90195004384FC",
+      "name": "Debug"
+    },
+    "97C147071CF9000F007C117D": {
+      "baseConfigurationReference": "7AFA3C8E1D35360C0083082E",
+      "name": "Release"
+    }
+  },
+  "settings": {
+    "/objects/0BAD17632BD21E180015712B/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BAD17642BD21E180015712B/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BAD17642BD21E180015712B/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BAD17642BD21E180015712B/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BAD17642BD21E180015712B/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DESIGN)",
+    "/objects/0BAD17642BD21E180015712B/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BAD17662BD21E210015712B/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BAD17672BD21E210015712B/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BAD17672BD21E210015712B/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BAD17672BD21E210015712B/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BAD17672BD21E210015712B/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DESIGN)",
+    "/objects/0BAD17672BD21E210015712B/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BAD17682BD21E2A0015712B/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BAD17692BD21E2A0015712B/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BAD17692BD21E2A0015712B/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BAD17692BD21E2A0015712B/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BAD17692BD21E2A0015712B/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DESIGN)",
+    "/objects/0BAD17692BD21E2A0015712B/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB220C2C5480B500BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB220D2C5480B500BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB220D2C5480B500BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB220D2C5480B500BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB220D2C5480B500BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DEV)",
+    "/objects/0BFB220D2C5480B500BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB220E2C5480BE00BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB220F2C5480BE00BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB220F2C5480BE00BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB220F2C5480BE00BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB220F2C5480BE00BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_STAGING)",
+    "/objects/0BFB220F2C5480BE00BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB22102C5480C400BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB22112C5480C400BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB22112C5480C400BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB22112C5480C400BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB22112C5480C400BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_PROD)",
+    "/objects/0BFB22112C5480C400BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB22122C5480CD00BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB22132C5480CD00BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB22132C5480CD00BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB22132C5480CD00BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB22132C5480CD00BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DEV)",
+    "/objects/0BFB22132C5480CD00BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB22142C5480D300BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB22152C5480D300BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB22152C5480D300BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB22152C5480D300BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB22152C5480D300BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_STAGING)",
+    "/objects/0BFB22152C5480D300BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB22162C5480DC00BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB22172C5480DC00BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB22172C5480DC00BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB22172C5480DC00BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB22172C5480DC00BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_PROD)",
+    "/objects/0BFB22172C5480DC00BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB22182C5480E500BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB22192C5480E500BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB22192C5480E500BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB22192C5480E500BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB22192C5480E500BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DEV)",
+    "/objects/0BFB22192C5480E500BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB221A2C5480EB00BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB221B2C5480EB00BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB221B2C5480EB00BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB221B2C5480EB00BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB221B2C5480EB00BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_STAGING)",
+    "/objects/0BFB221B2C5480EB00BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/0BFB221C2C5480F300BA0FA7/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/0BFB221D2C5480F300BA0FA7/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/0BFB221D2C5480F300BA0FA7/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/0BFB221D2C5480F300BA0FA7/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/0BFB221D2C5480F300BA0FA7/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_PROD)",
+    "/objects/0BFB221D2C5480F300BA0FA7/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/249021D3217E4FDB00AE95B9/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/249021D4217E4FDB00AE95B9/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/249021D4217E4FDB00AE95B9/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/249021D4217E4FDB00AE95B9/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/249021D4217E4FDB00AE95B9/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DEV)",
+    "/objects/249021D4217E4FDB00AE95B9/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/97C147031CF9000F007C117D/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/97C147041CF9000F007C117D/buildSettings/CODE_SIGN_IDENTITY[sdk=iphoneos*]": "iPhone Developer",
+    "/objects/97C147061CF9000F007C117D/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/97C147061CF9000F007C117D/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/97C147061CF9000F007C117D/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/97C147061CF9000F007C117D/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DEV)",
+    "/objects/97C147061CF9000F007C117D/buildSettings/PROVISIONING_PROFILE_SPECIFIER": "",
+    "/objects/97C147071CF9000F007C117D/buildSettings/CODE_SIGN_IDENTITY": "Apple Development",
+    "/objects/97C147071CF9000F007C117D/buildSettings/CODE_SIGN_STYLE": "Automatic",
+    "/objects/97C147071CF9000F007C117D/buildSettings/DEVELOPMENT_TEAM": "$(LEXE_IOS_TEAM)",
+    "/objects/97C147071CF9000F007C117D/buildSettings/PRODUCT_BUNDLE_IDENTIFIER": "$(LEXE_IOS_BUNDLE_DEV)",
+    "/objects/97C147071CF9000F007C117D/buildSettings/PROVISIONING_PROFILE_SPECIFIER": ""
+  },
+  "xcconfigs": {
+    "app/ios/Flutter/Debug.xcconfig": "#include? \"Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig\"\n#include \"Generated.xcconfig\"\nENABLE_USER_SCRIPT_SANDBOXING = NO\n#include \"Signing.xcconfig\"\n",
+    "app/ios/Flutter/Release.xcconfig": "#include? \"Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig\"\n#include \"Generated.xcconfig\"\nENABLE_USER_SCRIPT_SANDBOXING = NO\n#include \"Signing.xcconfig\"\n",
+    "app/ios/Flutter/Signing.xcconfig": "// Shared defaults. Personal values belong in LocalSigning.xcconfig.\nLEXE_IOS_TEAM = M2MS8SZ4DR\nLEXE_IOS_BUNDLE_DEV = app.lexe.lexeapp.dev\nLEXE_IOS_BUNDLE_DESIGN = app.lexe.lexeapp.design\nLEXE_IOS_BUNDLE_STAGING = app.lexe.lexeapp.staging\nLEXE_IOS_BUNDLE_PROD = app.lexe.lexeapp\n#include? \"LocalSigning.xcconfig\"\n"
+  }
+}

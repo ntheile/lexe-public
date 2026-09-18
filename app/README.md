@@ -241,6 +241,38 @@ Restart your machine. `adb devices` should now pick up any connected devices.
 
 ### (macOS only) iOS setup
 
+#### Personal signing and bundle IDs
+
+Keep personal Apple settings out of the tracked Xcode project. Copy
+`ios/Flutter/LocalSigning.xcconfig.example` to
+`ios/Flutter/LocalSigning.xcconfig` and fill in your Apple team ID and bundle
+IDs. The local file is ignored by Git. These overrides apply in Xcode and
+Flutter, including archives, without rewriting `project.pbxproj`.
+
+Each flavor has its own bundle ID setting (`DEV`, `DESIGN`, `STAGING`,
+`PROD`). Debug, Profile, and Release use the same identity within a flavor.
+Distinct IDs let different flavors coexist on a device. Changing signing
+does not change the backend environment or Google OAuth configuration.
+
+From the repository root, enable the signing guard:
+
+```bash
+git config --local core.hooksPath .githooks
+./tools/verify-ios-project-env
+```
+
+If you already use a custom hooks path, integrate `.githooks/pre-commit`
+into your existing hook instead of replacing it. The hook validates the
+staged snapshot and never fixes or stages files automatically. Stage the
+verifier, its baseline, and the shared signing setup together on first use.
+CI runs the same check on macOS (the verifier uses Apple's `plutil`).
+
+`tools/ios-project-env.json` records the reviewed signing settings for every
+Xcode configuration and the shared xcconfig files. Intentional shared signing
+or configuration changes must update that baseline in the same review;
+personal values belong only in the ignored local file. To inspect the staged
+snapshot manually, run `./tools/verify-ios-project-env --staged`.
+
 #### (Apple Silicon only) Install Rosetta
 
 ```bash

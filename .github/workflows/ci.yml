@@ -49,6 +49,14 @@ env:
 
 jobs:
 
+  ios-project-env:
+    runs-on: macos-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - run: python3 tools/verify-ios-project-env
+      - run: python3 tools/test-ios-project-env.py
+
   # --- Linting the whole workspace --- #
   clippy:
     if: github.event_name == 'push' || github.event.pull_request.draft == false
