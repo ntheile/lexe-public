@@ -70,6 +70,7 @@ flutter_rust_bridge = { workspace = true, optional = true, features = [
     "thread-pool",
     "rust-async",
 ] }
+hpke = { version = "=0.13.0", default-features = false, features = ["alloc", "x25519"] }
 
 # TODO(phlip9): uncomment when I need this
 # [target.'cfg(target_os = "android")'.dependencies]

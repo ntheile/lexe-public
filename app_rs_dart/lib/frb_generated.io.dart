@@ -14,6 +14,7 @@ import 'dart:ffi' as ffi;
 import 'ffi/api.dart';
 import 'ffi/app.dart';
 import 'ffi/app_data.dart';
+import 'ffi/connect.dart';
 import 'ffi/debug.dart';
 import 'ffi/form.dart';
 import 'ffi/gdrive.dart';

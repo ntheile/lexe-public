@@ -4,3 +4,8 @@ LEXE_IOS_BUNDLE_DEV = com.example.lexe
 LEXE_IOS_BUNDLE_DESIGN = com.example.lexe.design
 LEXE_IOS_BUNDLE_STAGING = com.example.lexe.staging
 LEXE_IOS_BUNDLE_PROD = com.example.lexe
+
+// Optional Connect: copy LocalSigning.entitlements.example to
+// LocalSigning.entitlements and enable Associated Domains for your App ID.
+// LEXE_IOS_CONNECT_DOMAIN = your-connect-domain.example
+// CODE_SIGN_ENTITLEMENTS = Flutter/LocalSigning.entitlements

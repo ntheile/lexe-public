@@ -35,3 +35,5 @@ Runner/GeneratedPluginRegistrant.*
 
 # Personal Apple team and bundle identifiers
 /Flutter/LocalSigning.xcconfig
+
+/Flutter/LocalSigning.entitlements

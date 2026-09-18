@@ -71,8 +71,9 @@ def main():
     os.chdir(root)
     # Catch even force-added local overrides. Working-tree mode also checks
     # the index because an ignored local file is expected to exist on disk.
-    if git("ls-files", "--", LOCAL).strip():
-        raise ValueError(f"{LOCAL} must remain untracked")
+    for local_path in (LOCAL, "app/ios/Flutter/LocalSigning.entitlements"):
+        if git("ls-files", "--", local_path).strip():
+            raise ValueError(f"{local_path} must remain untracked")
     expected = json.loads(read(BASELINE, args.staged))
     actual = snapshot(read(PROJECT, args.staged), {
         path: read(path, args.staged).decode() for path in CONFIGS

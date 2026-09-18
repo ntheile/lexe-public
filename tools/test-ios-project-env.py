@@ -66,6 +66,13 @@ class GuardTests(unittest.TestCase):
         self.git('add', '-f', LOCAL)
         self.assertNotEqual(self.check('--staged'), 0)
 
+    def test_force_added_local_entitlements_are_rejected(self):
+        local = 'app/ios/Flutter/LocalSigning.entitlements'
+        (self.repo / local).write_text('<plist/>')
+        self.assertEqual(self.check(), 0)
+        self.git('add', '-f', local)
+        self.assertNotEqual(self.check('--staged'), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

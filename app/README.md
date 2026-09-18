@@ -626,3 +626,104 @@ The current build process looks like this:
 * Unfortunately, the hot-reload and hot-restart features for `flutter run` don't
   support reloading native libraries. If you've changed `app-rs` and want to see
   the effects, you'll need to full-restart `flutter run`.
+
+### Lexe Connect PoC (iOS)
+
+The PoC handles `https://zaprite.bolt12.rocks/lexe/connect` and returns to
+`https://zaprite.bolt12.rocks/lexe/callback`. It supports `read_info`,
+`read_payments`, and `receive`. It rejects spending scopes, budgets,
+explicit permissions, and POST callbacks. Granted credentials remain valid
+until revoked from the app's Client credentials screen.
+
+For personal signing, copy `ios/Flutter/LocalSigning.entitlements.example`
+to `ios/Flutter/LocalSigning.entitlements`, then add these local overrides:
+
+```xcconfig
+LEXE_IOS_CONNECT_DOMAIN = zaprite.bolt12.rocks
+CODE_SIGN_ENTITLEMENTS = Flutter/LocalSigning.entitlements
+```
+
+Both local signing files are ignored and protected by the commit guard.
+Enable Associated Domains on your Apple App ID and refresh its provisioning
+profile. The deployed association must authorize your signed application
+identifier for `/lexe/connect`. Zaprite's development app must separately
+claim `/lexe/callback`. Changing the entitlement domain does not change the
+PoC's explicit URL allowlist in `lib/connect.dart`.
+
+#### Request and response encoding (PoC v2)
+
+This is our local encrypted-only profile of the September 18 candidate
+[protocol](https://github.com/ZapriteApp/app-to-app-authorization/blob/4064b59ead7f9b16f05ad48d84b704c3fda20bfb/lexe-connect/protocol.md).
+Version 2 rejects the earlier query-response PoC. These wire choices still
+need joint agreement; they are not an official version of the shared draft.
+
+Requests require `v=2`, `request_id`, `scopes`, `redirect_uri`,
+`hpke_pubkey`, `expires_at`, and `metadata`. `app_name` and `label` are
+optional unverified display hints. The callback domain is the primary
+identity on the approval screen. No remote branding is fetched.
+
+- Generate 32 fresh CSPRNG bytes for confidential state in `metadata`,
+  encoded as canonical unpadded base64url. Parsing checks syntax, not entropy.
+- Generate an independent public `request_id` with at least 128 random bits.
+  The parser accepts 22–128 URL-safe characters. It is a lookup/deduplication
+  aid, never proof of origin or a replacement for secret state.
+- `scopes` is a comma-separated list with no duplicates.
+- `expires_at` is Unix time in seconds, at most ten minutes in the future.
+  This expires the connection request, not the granted credential.
+- `hpke_pubkey` is a 32-byte X25519 public key, unpadded base64url.
+- Percent-encode query values once. Preserve the exact emitted URL string.
+
+Both success and rejection callbacks preserve the existing callback query
+and put only `v=2`, public `request_id`, and `credential_ciphertext` in the
+fragment. Secret state is returned only inside the encrypted payload.
+No plaintext result or error downgrade is permitted.
+
+The ciphertext is unpadded base64url of `enc || ct`, where `enc` is the first
+32 bytes and `ct` includes the AES-GCM authentication tag. Encryption uses
+RFC 9180 base mode, DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, AES-128-GCM
+(KEM/KDF/AEAD IDs 0x0020/0x0001/0x0001). HPKE info is the UTF-8 string
+`lexe-connect/v2`. AAD is the exact original request URL in UTF-8, not a
+reconstructed or normalized URL. HPKE Base mode does not authenticate the
+sender; keeping outbound state confidential remains essential.
+
+The decrypted success JSON contains `v`, `outcome=success`, `request_id`,
+`metadata`, `credential`, `client_pubkey`, and `scopes`. `client_pubkey`
+identifies the issued client, not the user's wallet or receiving address.
+Rejection contains `v`, `outcome=rejected`, `request_id`, `metadata`, and
+`error=access_denied`, with no credential or scopes.
+
+Zaprite must validate the live pending attempt, expiration, expected
+response mode, and decrypted state and outcome. It must inspect the actual
+granted scopes through the trusted Lexe API before accepting the connection
+once and securely storing the credential. The callback's scope list is not
+an independent attestation of the grant. Receiving-address lookup is not
+implemented by this PoC.
+
+Invalid requests and setup failures are shown locally and never redirected.
+Dismissing the screen without a decision returns no callback. A failed
+return retries the same encrypted result. After an ambiguous issuance
+failure or process exit, inspect Client credentials before starting again.
+Only public request IDs and expirations are persisted for replay protection,
+never credentials, state, or callback URLs. Opening the callback is not an
+application-level receipt; there is no automatic revocation on delivery
+failure. Return delivery uses an iOS Universal Link with no browser fallback.
+Android recipient verification is not implemented.
+
+#### Shared fixtures
+
+`test/fixtures/lexe-connect-v2.json` contains a byte-exact request URL, success
+and rejection JSON, callback URLs, and HPKE vectors with disposable keys.
+The Rust test reproduces encryption and verifies decryption and tamper
+rejection. The Dart test checks parsing and callback construction against
+the same file. Zaprite's receiver should consume this fixture too.
+
+The fixture's RNG and private key are public test material, never production
+inputs. To deliberately regenerate after a protocol change:
+
+```sh
+LEXE_CONNECT_UPDATE_VECTORS=1 cargo test --locked -p app-rs \
+  ffi::connect::tests::shared_wire_vectors --lib
+```
+
+Run that command from the repository root, then review and commit the vector
+diff. Normal test runs only compare against the checked-in fixture.

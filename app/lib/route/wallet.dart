@@ -60,6 +60,7 @@ import 'package:lexeapp/components.dart'
         SplitAmountText,
         SubBalanceRow,
         showModalAsyncFlow;
+import 'package:lexeapp/connect.dart' show ConnectRequest;
 import 'package:lexeapp/currency_format.dart' as currency_format;
 import 'package:lexeapp/date_format.dart' as date_format;
 import 'package:lexeapp/feature_flags.dart' show FeatureFlags;
@@ -71,6 +72,7 @@ import 'package:lexeapp/route/channels.dart' show ChannelsPage;
 import 'package:lexeapp/route/claim/page.dart';
 import 'package:lexeapp/route/claim/state.dart' show ClaimFlowResult;
 import 'package:lexeapp/route/clients.dart';
+import 'package:lexeapp/route/connect.dart' show ConnectPage;
 import 'package:lexeapp/route/debug.dart' show DebugPage;
 import 'package:lexeapp/route/initial_deposit/page.dart'
     show InitialDepositPage;
@@ -381,7 +383,34 @@ class WalletPageState extends State<WalletPage> {
     this.uriEventsListener.pause();
 
     try {
-      info("WalletPage: uriEvent: $uri");
+      if (ConnectRequest.isConnectUri(uri)) {
+        try {
+          final request = ConnectRequest.parse(uri);
+          await Navigator.of(this.context).push<void>(
+            MaterialPageRoute(
+              builder: (_) =>
+                  ConnectPage(app: this.widget.app, request: request),
+            ),
+          );
+        } on FormatException catch (error) {
+          if (!this.mounted) return;
+          await showDialog<void>(
+            context: this.context,
+            builder: (context) => AlertDialog(
+              title: const Text('Invalid connection request'),
+              content: Text(error.message),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('Close'),
+                ),
+              ],
+            ),
+          );
+        }
+        return;
+      }
+      info("WalletPage: received URI event");
 
       // Wait for NodeInfo to be available (if not already)
       final uriFlowCtxResult = await this.collectUriFlowContext();

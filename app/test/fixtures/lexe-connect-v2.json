@@ -1,0 +1,21 @@
+{
+  "hpke_info": "lexe-connect/v2",
+  "notice": "DISPOSABLE TEST KEYS ONLY. Local PoC v2 choices, not an agreed upstream specification.",
+  "parse_time_unix_seconds": 1789689600,
+  "recipient_private_key": "BwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwc",
+  "recipient_public_key": "E75P6uryBMf9M1j8nAByGIHRdCeBKCJ-xnTzf3_pe20",
+  "request_uri": "https://zaprite.bolt12.rocks/lexe/connect?v=2&request_id=abcdefghijklmnopqrstuv&app_name=Zaprite&scopes=read_info%2Cread_payments%2Creceive&redirect_uri=https%3A%2F%2Fzaprite.bolt12.rocks%2Flexe%2Fcallback%3Fexisting%3Done%26existing%3Dtwo&hpke_pubkey=E75P6uryBMf9M1j8nAByGIHRdCeBKCJ-xnTzf3_pe20&expires_at=1789689900&metadata=AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8",
+  "responses": [
+    {
+      "callback_uri": "https://zaprite.bolt12.rocks/lexe/callback?existing=one&existing=two#v=2&request_id=abcdefghijklmnopqrstuv&credential_ciphertext=rjvxzYfC0u0lr0oaI57tBKmQ8A50A-TIBlkn3gEP0XplUSvPRoYUaYMl_qt4BM9E6ysO6iILZSXEBQgu8coktn7C8F2EJfZwfTUzinXaD26Q9LMocEot8AxVnlFkzRuIsNYD7JRrMeVafa_znyeYsls8kqLinVaBt_WIa5sPmU0GWNSbM1qVtxS-JzebpL3heCkv5nHgHyNisHDgCcHmtgJyyVQ3ixFzVzPxTUBsvdYy5OZnQhsVw2w4vI1uuNjsx3M7GHaRDSW1D60erv2muNORwO91CSUDhMCl-oZzixLKldaN1c1miHIyGRWXjotHDU0OsDp3qDACUaPgFjtAw_UO5eOfNp39EnPIOHQRL7KHiNc9Dn0k-5xFGA4ucNWSas2ifC80wSXu6wmlKg",
+      "credential_ciphertext": "rjvxzYfC0u0lr0oaI57tBKmQ8A50A-TIBlkn3gEP0XplUSvPRoYUaYMl_qt4BM9E6ysO6iILZSXEBQgu8coktn7C8F2EJfZwfTUzinXaD26Q9LMocEot8AxVnlFkzRuIsNYD7JRrMeVafa_znyeYsls8kqLinVaBt_WIa5sPmU0GWNSbM1qVtxS-JzebpL3heCkv5nHgHyNisHDgCcHmtgJyyVQ3ixFzVzPxTUBsvdYy5OZnQhsVw2w4vI1uuNjsx3M7GHaRDSW1D60erv2muNORwO91CSUDhMCl-oZzixLKldaN1c1miHIyGRWXjotHDU0OsDp3qDACUaPgFjtAw_UO5eOfNp39EnPIOHQRL7KHiNc9Dn0k-5xFGA4ucNWSas2ifC80wSXu6wmlKg",
+      "plaintext": "{\"v\":2,\"request_id\":\"abcdefghijklmnopqrstuv\",\"metadata\":\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8\",\"outcome\":\"success\",\"credential\":\"DISPOSABLE_TEST_CREDENTIAL\",\"client_pubkey\":\"DISPOSABLE_CLIENT_KEY\",\"scopes\":[\"read_info\",\"read_payments\",\"receive\"]}"
+    },
+    {
+      "callback_uri": "https://zaprite.bolt12.rocks/lexe/callback?existing=one&existing=two#v=2&request_id=abcdefghijklmnopqrstuv&credential_ciphertext=rjvxzYfC0u0lr0oaI57tBKmQ8A50A-TIBlkn3gEP0XplUSvPRoYUaYMl_qt4BM9E6ysO6iILZSXEBQgu8coktn7C8F2EJfZwfTUzinXaD26Q9LMocEot8AxVnlFkzRuIsNYD7JRrMeVafa_znyeYsls8kqLinVaBt_WIa5sPmU0GWNSbM1qVtxS-JzebpL3heCg_73fmGDUkvn6hHtbwvB4kmhc6ykg0YAn9eWpRlfEag8RkG4HMTP-L2ZYDkVFDcSdq",
+      "credential_ciphertext": "rjvxzYfC0u0lr0oaI57tBKmQ8A50A-TIBlkn3gEP0XplUSvPRoYUaYMl_qt4BM9E6ysO6iILZSXEBQgu8coktn7C8F2EJfZwfTUzinXaD26Q9LMocEot8AxVnlFkzRuIsNYD7JRrMeVafa_znyeYsls8kqLinVaBt_WIa5sPmU0GWNSbM1qVtxS-JzebpL3heCg_73fmGDUkvn6hHtbwvB4kmhc6ykg0YAn9eWpRlfEag8RkG4HMTP-L2ZYDkVFDcSdq",
+      "plaintext": "{\"v\":2,\"request_id\":\"abcdefghijklmnopqrstuv\",\"metadata\":\"AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8\",\"outcome\":\"rejected\",\"error\":\"access_denied\"}"
+    }
+  ],
+  "sender_rng_byte": 66
+}

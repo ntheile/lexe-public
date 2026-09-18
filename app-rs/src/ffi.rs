@@ -60,6 +60,8 @@ pub mod api;
 pub mod app;
 /// Dart interface for app data.
 pub mod app_data;
+/// Encrypted Lexe Connect callbacks.
+pub mod connect;
 /// Debug methods for use during development.
 pub mod debug;
 /// Form field validators.

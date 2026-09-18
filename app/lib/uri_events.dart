@@ -2,8 +2,8 @@ import 'dart:async' show unawaited;
 
 import 'package:app_links/app_links.dart' as app_links;
 import 'package:flutter/foundation.dart' show immutable;
+import 'package:lexeapp/connect.dart' show ConnectRequest;
 import 'package:lexeapp/prelude.dart';
-import 'package:lexeapp/stream_ext.dart';
 import 'package:rxdart/rxdart.dart' show BehaviorSubject;
 
 /// An interface for receiving platform URI events. A URI event is when the user
@@ -87,9 +87,16 @@ final class ProdUriEvents implements UriEvents {
     }
 
     // Spawn a task that pipes all platform URI events into `events`.
-    unawaited(uriStream.log(id: "uriStream").pipe(events.sink));
+    if (initialUri != null && ConnectRequest.isConnectUri(initialUri)) {
+      events.add(initialUri);
+    }
+    // Connect URLs contain private request context. Never log raw URI events.
+    unawaited(uriStream.distinct().pipe(events.sink));
 
-    return ProdUriEvents(initialUri: initialUri, uriStream: events.stream);
+    return ProdUriEvents(
+      initialUri: initialUri,
+      uriStream: events.stream.distinct(),
+    );
   }
 
   const ProdUriEvents({required this.initialUri, required this.uriStream});
