@@ -59,6 +59,8 @@ void main() {
     testWidgets(
       'failed delivery reuses encrypted ${approve ? 'success' : 'rejection'}',
       (tester) async {
+        await tester.binding.setSurfaceSize(const Size(390, 844));
+        addTearDown(() => tester.binding.setSurfaceSize(null));
         final dir = (await tester.runAsync(
           () => Directory.systemTemp.createTemp('lexe-connect-flow'),
         ))!;
@@ -107,7 +109,7 @@ void main() {
         for (var i = 0; i < 2; i++) {
           final button = find.text(
             i == 0
-                ? (approve ? 'Approve' : 'Reject')
+                ? (approve ? 'Confirm Connection' : 'Reject')
                 : 'Retry return to Zaprite',
           );
           await tester.scrollUntilVisible(button, 200);

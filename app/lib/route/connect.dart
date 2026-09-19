@@ -166,75 +166,273 @@ class _ConnectPageState extends State<ConnectPage> {
   @override
   Widget build(BuildContext context) {
     final request = this.widget.request;
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
     final hasResult =
         this.created != null || this.callback != null || this.rejected;
+    final spends = request.scopes.any((scope) => scope.name == 'spend');
+    // Branding is bundled for our fixed, allowlisted callback destination.
+    // Never use the requester-controlled app_name as verified app identity.
     return PopScope(
       canPop: !this.busy,
       child: Scaffold(
-        appBar: AppBar(title: const Text('Connect to Lexe')),
-        body: ListView(
-          padding: const EdgeInsets.all(24),
-          children: [
-            Text(
-              request.redirect.host,
-              style: Theme.of(context).textTheme.headlineSmall,
+        appBar: AppBar(
+          title: const Text('Connect App'),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              tooltip: 'Close',
+              onPressed: this.busy
+                  ? null
+                  : () => Navigator.of(context).maybePop(),
+              icon: const Icon(Icons.close),
             ),
-            const SizedBox(height: 12),
-            const Text(
-              'Credentials will be returned to this verified app-link destination:',
-            ),
-            Text('${request.redirect.origin}${request.redirect.path}'),
-            Text('Requester-supplied name (unverified): ${request.appName}'),
-            const SizedBox(height: 24),
-            const Text('Requested access'),
-            for (final scope in request.scopes)
-              ListTile(
-                title: Text(switch (scope.name) {
-                  'readInfo' => 'Read wallet identity, balance and channels',
-                  'readPayments' => 'Read payment history',
-                  'receive' =>
-                    'Create invoices, offers and addresses; resync and cancel payments',
-                  'spend' =>
-                    'Pay invoices, offers and on-chain addresses; update payment notes',
-                  _ => 'Unsupported scope',
-                }),
-              ),
-            Text('Credential label: ${request.label}'),
-            const SizedBox(height: 12),
-            Text(
-              request.scopes.any((scope) => scope.name == 'spend')
-                  ? 'Unlimited spending: this app can spend from your wallet without further approval in Lexe. There is no amount limit or renewal interval. Access remains active until you revoke it from Client credentials.'
-                  : 'Access remains active until you revoke it from Client credentials. This request does not grant spending access.',
-            ),
-            if (this.failure != null)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                child: Text(
-                  this.failure!,
-                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+          ],
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const _ConnectAppIdentity(asset: 'lexe', label: 'Lexe'),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 38),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Divider(color: colors.outlineVariant),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                  ),
+                                  child: Icon(
+                                    Icons.link,
+                                    color: colors.onSurfaceVariant,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Divider(color: colors.outlineVariant),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const _ConnectAppIdentity(
+                          asset: 'zaprite',
+                          label: 'Zaprite P2P',
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 32),
+                    Text.rich(
+                      const TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Zaprite P2P',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          TextSpan(text: ' is requesting access to your '),
+                          TextSpan(
+                            text: 'Lexe wallet.',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      request.redirect.host,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                    const SizedBox(height: 32),
+                    Card(
+                      margin: EdgeInsets.zero,
+                      elevation: 0,
+                      color: colors.surfaceContainerHighest,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Requested permissions',
+                              style: theme.textTheme.titleMedium,
+                            ),
+                            const SizedBox(height: 12),
+                            for (final scope in request.scopes)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 6,
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.check_circle_outline,
+                                      size: 20,
+                                      color: colors.onSurfaceVariant,
+                                    ),
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: Text(switch (scope.name) {
+                                        'readInfo' =>
+                                          'Read wallet identity, balance and channels',
+                                        'readPayments' =>
+                                          'Read payment history',
+                                        'receive' =>
+                                          'Create invoices, offers and addresses; resync and cancel payments',
+                                        'spend' =>
+                                          'Pay invoices, offers and on-chain addresses; update payment notes',
+                                        _ => 'Unsupported scope',
+                                      }),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'You can revoke access at any time in Lexe’s Client credentials settings.',
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    ExpansionTile(
+                      title: const Text('Connection details'),
+                      tilePadding: EdgeInsets.zero,
+                      childrenPadding: const EdgeInsets.only(bottom: 16),
+                      expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Credential label: ${request.label}'),
+                        Text(
+                          'Requester-supplied name (unverified): ${request.appName}',
+                        ),
+                        Text(
+                          'Return destination: ${request.redirect.origin}${request.redirect.path}',
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            const SizedBox(height: 24),
-            FilledButton(
-              onPressed: this.busy || (this.attemptedCreation && !hasResult)
-                  ? null
-                  : () => this.submit(approve: !this.rejected),
-              child: Text(
-                this.busy
-                    ? 'Working…'
-                    : hasResult
-                    ? 'Retry return to Zaprite'
-                    : 'Approve',
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (this.failure != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Text(
+                          this.failure!,
+                          style: TextStyle(color: colors.error),
+                        ),
+                      ),
+                    Text(
+                      spends
+                          ? 'Unlimited spending: Zaprite P2P can spend from your wallet without further approval in Lexe.'
+                          : 'This connection does not grant spending access.',
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 12),
+                    FilledButton(
+                      style: FilledButton.styleFrom(
+                        minimumSize: const Size.fromHeight(56),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onPressed:
+                          this.busy || (this.attemptedCreation && !hasResult)
+                          ? null
+                          : () => this.submit(approve: !this.rejected),
+                      child: Text(
+                        this.busy
+                            ? 'Working…'
+                            : hasResult
+                            ? 'Retry return to Zaprite'
+                            : 'Confirm Connection',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    if (!this.attemptedCreation && !hasResult)
+                      TextButton(
+                        onPressed: this.busy
+                            ? null
+                            : () => this.submit(approve: false),
+                        child: const Text('Reject'),
+                      ),
+                    Text(
+                      'You’ll return to Zaprite P2P after confirming.',
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            if (!this.attemptedCreation && !hasResult)
-              TextButton(
-                onPressed: this.busy ? null : () => this.submit(approve: false),
-                child: const Text('Reject'),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+class _ConnectAppIdentity extends StatelessWidget {
+  const _ConnectAppIdentity({required this.asset, required this.label});
+  final String asset;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: 112,
+    child: Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(22),
+          child: Container(
+            width: 88,
+            height: 88,
+            color: const Color(0xffeff3f5),
+            child: Image.asset(
+              'assets/connect/$asset.png',
+              excludeFromSemantics: true,
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ],
+    ),
+  );
 }
