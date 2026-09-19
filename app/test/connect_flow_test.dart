@@ -19,12 +19,14 @@ class _App extends App {
 class _Handle extends AppHandle {
   _Handle() : super(inner: _App());
   int creations = 0;
+  CreateClientRequest? issuedRequest;
 
   @override
   Future<CreateClientResponse> createClient({
     required CreateClientRequest req,
   }) async {
     this.creations++;
+    this.issuedRequest = req;
     return const CreateClientResponse(
       pubkey: 'client-key',
       credentials: 'secret-credential',
@@ -86,7 +88,7 @@ void main() {
             'metadata': base64Url
                 .encode(List.generate(32, (i) => i))
                 .replaceAll('=', ''),
-            'scopes': 'read_info',
+            'scopes': 'read_info,read_payments,receive,spend',
             'redirect_uri': 'https://zaprite.bolt12.rocks/lexe/callback',
             'hpke_pubkey': base64Url
                 .encode(List.filled(32, 9))
@@ -101,13 +103,14 @@ void main() {
             home: ConnectPage(app: handle, request: request),
           ),
         );
+        expect(find.textContaining('Unlimited spending:'), findsOneWidget);
         for (var i = 0; i < 2; i++) {
           final button = find.text(
             i == 0
                 ? (approve ? 'Approve' : 'Reject')
                 : 'Retry return to Zaprite',
           );
-          await tester.ensureVisible(button);
+          await tester.scrollUntilVisible(button, 200);
           await tester.runAsync(() async {
             await tester.tap(button);
             await attempts[i].future.timeout(
@@ -131,6 +134,15 @@ void main() {
         final payload = jsonDecode(api.plaintexts.last) as Map<String, dynamic>;
         expect(payload['metadata'], request.metadata);
         expect(payload['outcome'], approve ? 'success' : 'rejected');
+        if (approve) {
+          expect(payload['scopes'], [
+            'read_info',
+            'read_payments',
+            'receive',
+            'spend',
+          ]);
+          expect(handle.issuedRequest!.scopes, request.scopes);
+        }
         if (!approve) {
           expect(payload['credential'], isNull);
           expect(payload['error'], 'access_denied');

@@ -30,6 +30,7 @@ class ConnectRequest {
     'read_info': Scope.readInfo,
     'read_payments': Scope.readPayments,
     'receive': Scope.receive,
+    'spend': Scope.spend,
   };
 
   static bool isConnectUri(String raw) {
@@ -99,7 +100,7 @@ class ConnectRequest {
     final ids = field('scopes').split(',');
     require(
       ids.toSet().length == ids.length && ids.every(scopeIds.containsKey),
-      'Only read_info, read_payments and receive are supported.',
+      'Only read_info, read_payments, receive and spend are supported.',
     );
     final redirect = Uri.parse(field('redirect_uri'));
     require(

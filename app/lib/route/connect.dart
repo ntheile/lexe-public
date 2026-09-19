@@ -194,13 +194,17 @@ class _ConnectPageState extends State<ConnectPage> {
                   'readPayments' => 'Read payment history',
                   'receive' =>
                     'Create invoices, offers and addresses; resync and cancel payments',
+                  'spend' =>
+                    'Pay invoices, offers and on-chain addresses; update payment notes',
                   _ => 'Unsupported scope',
                 }),
               ),
             Text('Credential label: ${request.label}'),
             const SizedBox(height: 12),
-            const Text(
-              'Access remains active until you revoke it from Client credentials. This request does not grant spending access.',
+            Text(
+              request.scopes.any((scope) => scope.name == 'spend')
+                  ? 'Unlimited spending: this app can spend from your wallet without further approval in Lexe. There is no amount limit or renewal interval. Access remains active until you revoke it from Client credentials.'
+                  : 'Access remains active until you revoke it from Client credentials. This request does not grant spending access.',
             ),
             if (this.failure != null)
               Padding(

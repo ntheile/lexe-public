@@ -69,13 +69,27 @@ void main() {
     expect(callback.toString(), isNot(contains(parsed.metadata)));
   });
 
+  test('accepts explicit spending without granting full access', () {
+    final parsed = ConnectRequest.parse(
+      request({'scopes': 'read_info,read_payments,receive,spend'}),
+      now: now,
+    );
+    expect(parsed.scopes.map((scope) => scope.name), [
+      'readInfo',
+      'readPayments',
+      'receive',
+      'spend',
+    ]);
+  });
+
   for (final bad in <Map<String, String>>[
     {'v': '1'},
-    {'scopes': 'spend'},
+    {'scopes': 'manage_channels'},
     {'scopes': 'full'},
     {'scopes': 'receive,receive'},
     {'scopes': ''},
     {'budget': '100'},
+    {'interval': 'daily'},
     {'permissions': 'pay_invoice'},
     {'post_url': 'https://example.com'},
     {'request_id': 'short'},

@@ -631,7 +631,9 @@ The current build process looks like this:
 
 The PoC handles `https://zaprite.bolt12.rocks/lexe/connect` and returns to
 `https://zaprite.bolt12.rocks/lexe/callback`. It supports `read_info`,
-`read_payments`, and `receive`. It rejects spending scopes, budgets,
+`read_payments`, `receive`, and `spend`. Spending requires explicit consent
+to unlimited payments, including invoices, offers, and on-chain addresses.
+There is no amount limit or renewal interval. It rejects budgets, intervals,
 explicit permissions, and POST callbacks. Granted credentials remain valid
 until revoked from the app's Client credentials screen.
 
@@ -696,8 +698,9 @@ Zaprite must validate the live pending attempt, expiration, expected
 response mode, and decrypted state and outcome. It must inspect the actual
 granted scopes through the trusted Lexe API before accepting the connection
 once and securely storing the credential. The callback's scope list is not
-an independent attestation of the grant. Receiving-address lookup is not
-implemented by this PoC.
+an independent attestation of the grant. Zaprite fetches the wallet identity
+and receiving address with that same credential, then offers a review before
+saving it in protected spending storage.
 
 Invalid requests and setup failures are shown locally and never redirected.
 Dismissing the screen without a decision returns no callback. A failed
